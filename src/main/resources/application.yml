@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    default: local
+  jpa:
+    properties:
+      hibernate:
+        show_sql: false
+
+

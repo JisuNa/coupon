@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://unknown.url:3306/test?useSSL=false&rewriteBatchedStatements=true
+    username: username
+    password: password
+
