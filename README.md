@@ -1,5 +1,5 @@
 # 선착순 쿠폰 이벤트 개발 API
-이 프로젝트는 [여기어때-선착순 쿠폰 이벤트 개발 구조](https://www.codenary.co.kr/architecture/list?detail_id=84)에서 아이디어를 얻 시작된 토이 프로젝트입니다.
+이 프로젝트는 [여기어때-선착순 쿠폰 이벤트 개발 구조](https://www.codenary.co.kr/architecture/list?detail_id=84)에서 아이디어를 얻어 시작된 토이 프로젝트입니다.
 
 ## Skills
 - Kotlin

@@ -3,9 +3,14 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.springframework.boot") version "2.7.2"
     id("io.spring.dependency-management") version "1.0.12.RELEASE"
+
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
     kotlin("plugin.jpa") version "1.6.21"
+    kotlin("kapt") version "1.6.21"
+
+    application
+    idea
 }
 
 group = "com.toy"
@@ -25,6 +30,9 @@ dependencies {
 
     runtimeOnly("mysql:mysql-connector-java")
 
+    implementation("com.querydsl:querydsl-jpa")
+    kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -37,4 +45,13 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+idea {
+    module {
+        file("build/generated/source/kapt/main").apply {
+            sourceDirs = sourceDirs.plus(this)
+            generatedSourceDirs = generatedSourceDirs.plus(this)
+        }
+    }
 }
