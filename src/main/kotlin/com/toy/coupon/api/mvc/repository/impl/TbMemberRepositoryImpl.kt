@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.springframework.stereotype.Repository
 
 @Repository
-class TbMemberRepositoryImpl: QuerydslRepositorySupport(TbMember::class.java), DslTbMemberRepository {
+class TbMemberRepositoryImpl : QuerydslRepositorySupport(TbMember::class.java), DslTbMemberRepository {
     override fun findMember(memberNid: Long): TbMember? {
         return from(tbMember)
             .where(

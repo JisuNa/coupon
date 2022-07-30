@@ -7,6 +7,8 @@
 - Spring Data JPA
 - Spring Security
 - Spring Data Redis
+- QueryDSL
+- Ktlint
 
 ## 기본 요구사항
 1. 이벤트 기간 동안, 매일 특정 시간 오픈하며 총지급 수량을 한정한다.

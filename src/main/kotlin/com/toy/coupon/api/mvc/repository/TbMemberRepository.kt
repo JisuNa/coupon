@@ -5,8 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface TbMemberRepository : JpaRepository<TbMember, Long>, DslTbMemberRepository {
-}
+interface TbMemberRepository : JpaRepository<TbMember, Long>, DslTbMemberRepository
 
 interface DslTbMemberRepository {
     fun findMember(memberNid: Long): TbMember?
