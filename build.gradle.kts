@@ -10,8 +10,13 @@ plugins {
     kotlin("plugin.jpa") version "1.6.21"
     kotlin("kapt") version "1.6.21"
 
+    jacoco
     application
     idea
+}
+
+jacoco {
+    toolVersion = "0.8.8"
 }
 
 group = "com.toy"
@@ -47,6 +52,34 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+val jacocoExcludePathList = listOf<String>().plus(('A'..'Z').map { char -> "**/Q$char*" })
+
+tasks {
+    test {
+        useJUnitPlatform()
+    }
+
+    jacocoTestReport {
+        finalizedBy(jacocoTestCoverageVerification)
+    }
+
+    jacocoTestCoverageVerification {
+        violationRules {
+            rule {
+                element = "BUNDLE"
+
+                limit {
+                    counter = "INSTRUCTION"
+                    value = "COVEREDRATIO"
+                    minimum = "0.50".toBigDecimal()
+                }
+
+                excludes = jacocoExcludePathList
+            }
+        }
+    }
 }
 
 idea {
