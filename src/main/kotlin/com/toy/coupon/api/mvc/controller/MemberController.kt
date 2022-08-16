@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController
 class MemberController(
     private val memberService: MemberService
 ) {
-    @GetMapping
+    @GetMapping(name = "회원 목록 조회")
     fun getMembers(): List<MemberVo> {
         return memberService.getMembers()
     }
 
-    @GetMapping("/{memberNid}")
+    @GetMapping("/{memberNid}", name = "회원 조회")
     fun getMember(@PathVariable memberNid: Long): MemberVo? {
         return memberService.getMember(memberNid)
     }
