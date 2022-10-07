@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository
 interface TbMemberRepository : JpaRepository<TbMember, Long>, DslTbMemberRepository
 
 interface DslTbMemberRepository {
-    fun findMember(memberNid: Long): TbMember?
+    fun findMember(memberId: Long): TbMember?
 }

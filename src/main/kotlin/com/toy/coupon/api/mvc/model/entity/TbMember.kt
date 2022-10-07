@@ -11,7 +11,7 @@ import javax.persistence.Id
 class TbMember(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val memberNid: Long,
+    val memberId: Long,
     var memberName: String,
     val loginAccount: String,
     var password: String,

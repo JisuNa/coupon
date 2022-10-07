@@ -16,10 +16,10 @@ internal class TbMemberRepositoryImplTest : AbstractRepository() {
     @DisplayName("회원 조회 성공")
     fun findMember() {
         // given
-        val memberNid = 1L
+        val memberId = 1L
 
         val result = tbMemberRepository.findMember(1L)
 
-        assertThat(result?.memberNid).isEqualTo(memberNid)
+        assertThat(result?.memberId).isEqualTo(memberId)
     }
 }

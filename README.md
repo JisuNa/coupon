@@ -23,5 +23,10 @@
 - [ ] 회원가입 API
 - [ ] 로그인
 
+## 문제점
+- JPA - bulk insert
+  - 이벤트를 생성하고 쿠폰 생성을 할 때 bulk insert를 할 수 없다.
+    - id 채번 방식이 auto_increment일 경우 불가능
+
 ## Contributor
 kuu2002@naver.com

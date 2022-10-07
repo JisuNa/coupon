@@ -17,8 +17,8 @@ class MemberController(
         return memberService.getMembers()
     }
 
-    @GetMapping("/{memberNid}", name = "회원 조회")
-    fun getMember(@PathVariable memberNid: Long): MemberVo? {
-        return memberService.getMember(memberNid)
+    @GetMapping("/{memberId}", name = "회원 조회")
+    fun getMember(@PathVariable memberId: Long): MemberVo? {
+        return memberService.getMember(memberId)
     }
 }

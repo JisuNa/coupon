@@ -14,7 +14,7 @@ class MemberServiceImpl(
         return tbMemberRepository.findAll().map { it.toMemberVo() }
     }
 
-    override fun getMember(memberNid: Long): MemberVo? {
-        return tbMemberRepository.findMember(memberNid)?.toMemberVo()
+    override fun getMember(memberId: Long): MemberVo? {
+        return tbMemberRepository.findMember(memberId)?.toMemberVo()
     }
 }

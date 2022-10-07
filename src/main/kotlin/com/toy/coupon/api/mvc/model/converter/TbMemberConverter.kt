@@ -5,7 +5,7 @@ import com.toy.coupon.api.mvc.model.vo.MemberVo
 
 fun TbMember.toMemberVo(): MemberVo {
     return MemberVo(
-        memberNid = memberNid,
+        memberId = memberId,
         memberName = memberName,
         loginAccount = loginAccount
     )

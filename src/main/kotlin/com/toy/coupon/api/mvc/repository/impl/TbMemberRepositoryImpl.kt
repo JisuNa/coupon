@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class TbMemberRepositoryImpl : QuerydslRepositorySupport(TbMember::class.java), DslTbMemberRepository {
-    override fun findMember(memberNid: Long): TbMember? {
+    override fun findMember(memberId: Long): TbMember? {
         return from(tbMember)
             .where(
-                tbMember.memberNid.eq(memberNid)
+                tbMember.memberId.eq(memberId)
             )
             .fetchOne()
     }

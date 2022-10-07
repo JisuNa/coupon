@@ -32,15 +32,15 @@ internal class MemberServiceImplTest {
     @Test
     @DisplayName("회원Nid로 조회 성공")
     fun getMember() {
-        val memberNid = 1L
+        val memberId = 1L
 
         // given
         given(tbMemberRepository.findMember(any())).willReturn(mockTbMember())
 
         // when
-        val result = memberService.getMember(memberNid)
+        val result = memberService.getMember(memberId)
 
         // then
-        assertThat(result?.memberNid).isEqualTo(memberNid)
+        assertThat(result?.memberId).isEqualTo(memberId)
     }
 }

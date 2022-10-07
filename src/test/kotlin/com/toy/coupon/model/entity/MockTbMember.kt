@@ -4,7 +4,7 @@ import com.toy.coupon.api.mvc.model.entity.TbMember
 import java.time.LocalDateTime
 
 fun mockTbMember(
-    memberNid: Long = 1L,
+    memberId: Long = 1L,
     memberName: String = "김길동",
     loginAccount: String = "test",
     password: String = "1234",
@@ -12,7 +12,7 @@ fun mockTbMember(
     updateDtm: LocalDateTime = LocalDateTime.now()
 ): TbMember {
     return TbMember(
-        memberNid = memberNid,
+        memberId = memberId,
         memberName = memberName,
         loginAccount = loginAccount,
         password = password,
