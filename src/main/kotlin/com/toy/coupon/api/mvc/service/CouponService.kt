@@ -4,6 +4,6 @@ import com.toy.coupon.api.mvc.model.vo.CouponPublishRequestVo
 
 interface CouponService {
     fun initCoupon(couponPublishRequestVo: CouponPublishRequestVo)
-    fun getCouponQuantity(): String?
+    fun getCouponQuantity(eventId: Long): String?
     fun decreaseQuantity()
 }

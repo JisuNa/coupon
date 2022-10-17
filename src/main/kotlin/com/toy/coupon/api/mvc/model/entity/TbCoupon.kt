@@ -11,9 +11,7 @@ import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
 @Entity
-class TbCoupon(
-
-) {
+class TbCoupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val couponId: Long? = null

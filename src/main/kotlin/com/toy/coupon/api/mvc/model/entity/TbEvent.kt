@@ -1,8 +1,9 @@
 package com.toy.coupon.api.mvc.model.entity
 
+import com.toy.coupon.api.mvc.common.Codes.EventStatus
+import com.toy.coupon.api.mvc.common.Codes.EventStatus.READY
 import java.time.LocalDate
 import javax.persistence.CascadeType
-import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType.LAZY
 import javax.persistence.GeneratedValue
@@ -13,6 +14,7 @@ import javax.persistence.OneToMany
 @Entity
 class TbEvent(
     val eventName: String,
+    val status: EventStatus = READY
 ) {
     @Id
     @GeneratedValue(strategy = IDENTITY)

@@ -17,11 +17,10 @@ class CouponServiceImpl(
     override fun initCoupon(couponPublishRequestVo: CouponPublishRequestVo) {
         value.set("quantity", couponPublishRequestVo.quantity.toString())
 
-
     }
 
-    override fun getCouponQuantity(): String? {
-        return value.get("quantity")
+    override fun getCouponQuantity(eventId: Long): String? {
+        return value.get("EVENT:${eventId}")
     }
 
     override fun decreaseQuantity() {
