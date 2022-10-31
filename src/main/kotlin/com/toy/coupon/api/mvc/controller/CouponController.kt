@@ -1,5 +1,6 @@
 package com.toy.coupon.api.mvc.controller
 
+import com.toy.coupon.api.mvc.model.vo.CouponProvidePutVo
 import com.toy.coupon.api.mvc.model.vo.CouponPublishRequestVo
 import com.toy.coupon.api.mvc.service.CouponService
 import org.springframework.web.bind.annotation.GetMapping
@@ -28,9 +29,8 @@ class CouponController(
         return couponService.getCouponQuantity(eventId)
     }
 
-    @PutMapping("/quantity/decrease")
-    fun decreaseQuantity() {
-        couponService.decreaseQuantity()
+    @PutMapping(name = "쿠폰 지급")
+    fun provideCoupon(@RequestBody couponProvidePutVo: CouponProvidePutVo) {
+        couponService.provideCoupon(couponProvidePutVo)
     }
-
 }

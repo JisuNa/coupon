@@ -11,5 +11,5 @@ interface TbEventRepository: JpaRepository<TbEvent, Long> {
         from TbEvent e
         where e.eventName = :eventName
     """)
-    fun findSameEvent(eventName: String)
+    fun findSameEvent(eventName: String): List<TbEvent>
 }

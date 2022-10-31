@@ -18,7 +18,7 @@ class EventServiceImpl(
     private val value = redis.opsForValue()
 
     override fun addEvent(eventRequestVo: EventRequestVo) {
-        assertNotExistSameEvent(eventRequestVo.couponQuantityString)
+        assertNotExistSameEvent(eventRequestVo.eventName)
 
         val event = TbEvent(eventName = eventRequestVo.eventName).apply {
             for (idx in 0 until eventRequestVo.couponQuantity ) {
@@ -31,6 +31,8 @@ class EventServiceImpl(
     }
 
     private fun assertNotExistSameEvent(eventName: String) {
-        tbEventRepository.findSameEvent(eventName)
+        if (tbEventRepository.findSameEvent(eventName).isNotEmpty()) {
+            throw Exception()
+        }
     }
 }

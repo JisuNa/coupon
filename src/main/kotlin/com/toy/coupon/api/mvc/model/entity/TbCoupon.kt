@@ -16,6 +16,8 @@ class TbCoupon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val couponId: Long? = null
 
+    var userId: Long? = null
+
     @Column(updatable = false)
     val issueDate: LocalDate = LocalDate.now()
 
