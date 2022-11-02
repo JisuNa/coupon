@@ -26,7 +26,7 @@ class CouponServiceImpl(
     }
 
     override fun getCouponQuantity(eventId: Long): String? {
-        return value.get("EVENT:${eventId}")
+        return value.get("EVENT:$eventId")
     }
 
     override fun provideCoupon(couponProvidePutVo: CouponProvidePutVo) {

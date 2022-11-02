@@ -7,13 +7,9 @@ internal class CouponControllerTest(
     private val couponService: CouponService
 ) {
 
-
-
     @Test
     fun provideCoupon() {
         Thread {
-
         }
-
     }
 }

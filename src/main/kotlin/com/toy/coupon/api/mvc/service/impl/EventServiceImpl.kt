@@ -21,7 +21,7 @@ class EventServiceImpl(
         assertNotExistSameEvent(eventRequestVo.eventName)
 
         val event = TbEvent(eventName = eventRequestVo.eventName).apply {
-            for (idx in 0 until eventRequestVo.couponQuantity ) {
+            for (idx in 0 until eventRequestVo.couponQuantity) {
                 addCoupon(TbCoupon())
             }
             tbEventRepository.save(this)
