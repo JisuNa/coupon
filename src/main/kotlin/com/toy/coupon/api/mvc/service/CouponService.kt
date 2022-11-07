@@ -1,10 +1,10 @@
 package com.toy.coupon.api.mvc.service
 
+import com.toy.coupon.api.mvc.model.entity.TbCoupon
 import com.toy.coupon.api.mvc.model.vo.CouponProvidePutVo
-import com.toy.coupon.api.mvc.model.vo.CouponPublishRequestVo
 
 interface CouponService {
-    fun initCoupon(couponPublishRequestVo: CouponPublishRequestVo)
-    fun getCouponQuantity(eventId: Long): String?
+    fun getCouponQuantity(eventId: Long): Long?
     fun provideCoupon(couponProvidePutVo: CouponProvidePutVo)
+    fun getCoupons(eventId: Long): List<TbCoupon>
 }

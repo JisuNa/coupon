@@ -1,5 +1,6 @@
 package com.toy.coupon.api.mvc.service.impl
 
+import com.toy.coupon.api.mvc.component.RedisHelper
 import com.toy.coupon.api.mvc.model.entity.TbCoupon
 import com.toy.coupon.api.mvc.model.entity.TbEvent
 import com.toy.coupon.api.mvc.model.vo.EventRequestVo
@@ -13,11 +14,12 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional(rollbackFor = [Exception::class])
 class EventServiceImpl(
     private val tbEventRepository: TbEventRepository,
+    private val redisHelper: RedisHelper,
     redis: RedisTemplate<String, String>
 ) : EventService {
     private val value = redis.opsForValue()
 
-    override fun addEvent(eventRequestVo: EventRequestVo) {
+    override fun addEvent(eventRequestVo: EventRequestVo): Long {
         assertNotExistSameEvent(eventRequestVo.eventName)
 
         val event = TbEvent(eventName = eventRequestVo.eventName).apply {
@@ -27,7 +29,9 @@ class EventServiceImpl(
             tbEventRepository.save(this)
         }
 
-        value.set("EVENT:${event.eventId}", eventRequestVo.couponQuantityString)
+        redisHelper.save("EVENT:${event.eventId}", eventRequestVo.couponQuantity)
+
+        return event.eventId!!
     }
 
     private fun assertNotExistSameEvent(eventName: String) {

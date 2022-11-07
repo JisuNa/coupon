@@ -23,18 +23,6 @@ class RedisConfig {
     private lateinit var port: String
 
     @Bean
-    fun redisTemplate(): RedisTemplate<*, *> {
-        return RedisTemplate<ByteArray, ByteArray>().apply {
-            setConnectionFactory(LettuceConnectionFactory(host, port.toInt()))
-
-            keySerializer = StringRedisSerializer()
-            hashKeySerializer = StringRedisSerializer()
-            valueSerializer = StringRedisSerializer()
-            hashValueSerializer = StringRedisSerializer()
-        }
-    }
-
-    @Bean
     fun redissonClient(): RedissonClient {
         val redisConfig = Config()
         redisConfig.useSingleServer().apply {

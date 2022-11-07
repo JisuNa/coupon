@@ -25,6 +25,15 @@ interface TbCouponRepository : JpaRepository<TbCoupon, String>, DslTbCouponRepos
     """
     )
     fun provideCoupon(eventId: Long, couponId: Long, userId: Long)
+
+    @Query(
+        """
+        from TbCoupon c
+        where c.tbEvent.eventId = :eventId
+        order by c.couponId asc
+    """
+    )
+    fun findCoupons(eventId: Long): List<TbCoupon>
 }
 
 interface DslTbCouponRepository {
