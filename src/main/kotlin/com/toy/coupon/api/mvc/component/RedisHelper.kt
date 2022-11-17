@@ -13,12 +13,12 @@ class RedisHelper(
         return redissonClient.getBucket<T>(key).get()
     }
 
-    fun <T> save(key: String, value: T) {
-        redissonClient.getBucket<T>(key).set(value)
+    fun save(key: String, value: Long) {
+        redissonClient.getAtomicLong(key).set(value)
     }
 
     fun decrease(key: String) {
-        getValue<Long>(key).dec()
+        redissonClient.getAtomicLong(key).decrementAndGet()
     }
 
     fun <T> lock(key: String, function: () -> T): T {

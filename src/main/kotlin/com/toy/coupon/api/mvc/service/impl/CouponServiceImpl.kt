@@ -22,8 +22,11 @@ class CouponServiceImpl(
     }
 
     override fun provideCoupon(couponProvidePutVo: CouponProvidePutVo) {
-        redisHelper.lock("COUPON:LOCK") {
-            if (redisHelper.getValue<Long>("EVENT:${couponProvidePutVo.eventId}") <= 0) {
+        val lockKeyName = "COUPON:LOCK"
+        val couponCountKey = "EVENT:${couponProvidePutVo.eventId}"
+
+        redisHelper.lock(lockKeyName) {
+            if (getCouponQuantity(couponCountKey) <= 0) {
                 throw NOT_ALLOW_PROVIDE_COUPON_THERE_IS_NO_COUPON.of()
             }
 
@@ -36,9 +39,17 @@ class CouponServiceImpl(
 
                 tbCouponRepository.provideCoupon(couponProvidePutVo.eventId, couponId, couponProvidePutVo.userId)
 
-                redisHelper.decrease("EVENT:${couponProvidePutVo.eventId}")
+                decreaseCouponCount(couponCountKey)
             }
         }
+    }
+
+    private fun getCouponQuantity(key: String): Long {
+        return redisHelper.getValue(key)
+    }
+
+    private fun decreaseCouponCount(key: String) {
+        redisHelper.decrease(key)
     }
 
     override fun getCoupons(eventId: Long): List<TbCoupon> {
